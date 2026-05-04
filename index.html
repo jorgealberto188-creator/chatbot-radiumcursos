@@ -214,6 +214,7 @@
     </div>
     <div class="chat-frame">
       <iframe
+        id="dify-iframe"
         src="https://udify.app/chatbot/f3wonJAPeznmAFWX"
         style="width: 100%; height: 100%; min-height: 700px"
         frameborder="0"
@@ -225,16 +226,16 @@
 
 <script>
   const ALUNOS = [
-    { usuario: "suzana",  senha: "alunoradium1",  nome: "Suzana Cavalcante" },
-    { usuario: "ikara",  senha: "alunoraduim2",  nome: "Íkara Silva" },
-    { usuario: "eules",  senha: "alunoradium3",  nome: "Eules Nepomuceno" },
+   { usuario: "suzana", senha: "alunoradium1", nome: "Suzana Cavalcante" },
+    { usuario: "ikara", senha: "alunoraduim2", nome: "Íkara Silva" },
+    { usuario: "eules", senha: "alunoradium3", nome: "Eules Nepomuceno" },
     { usuario: "wellington", senha: "alunoradium4", nome: "Wellington Santos" },
     { usuario: "patricia", senha: "alunoradium5", nome: "Patrícia Silva" },
     { usuario: "Reneide", senha: "alunoradium6", nome: "Reneide Santos" },
     { usuario: "Ana", senha: "alunoradium7", nome: "Ana Silva" },
     { usuario: "Manoel", senha: "alunoradium8", nome: "Manoel Santos" },
     { usuario: "zelma", senha: "alunoradium9", nome: "Zelma Silva" },
-    { usuario: "admin",   senha: "radium2026", nome: "Administrador" }
+    { usuario: "admin", senha: "radium2026", nome: "Administrador" }
   ];
 
   function doLogin() {
@@ -248,6 +249,9 @@
       document.getElementById("login-page").style.display = "none";
       document.getElementById("chat-page").classList.add("active");
       sessionStorage.setItem("jorginho_user", found.nome);
+      // Recarrega o iframe para limpar conversa anterior
+      const iframe = document.getElementById("dify-iframe");
+      iframe.src = iframe.src;
     } else {
       err.style.display = "block";
       document.getElementById("password").value = "";
