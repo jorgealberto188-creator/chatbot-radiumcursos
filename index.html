@@ -249,9 +249,10 @@
       document.getElementById("login-page").style.display = "none";
       document.getElementById("chat-page").classList.add("active");
       sessionStorage.setItem("jorginho_user", found.nome);
-      // Recarrega o iframe para limpar conversa anterior
+      // Força sessão completamente nova a cada login
       const iframe = document.getElementById("dify-iframe");
-      iframe.src = iframe.src;
+      const baseUrl = "https://udify.app/chatbot/f3wonJAPeznmAFWX";
+      iframe.src = baseUrl + "?t=" + Date.now();
     } else {
       err.style.display = "block";
       document.getElementById("password").value = "";
